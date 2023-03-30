@@ -9,7 +9,7 @@ export class Blog {
     this.tags = data.tags
     this.published = data.published
     this.creatorId = data.creatorId
-    this.createdAt = new Date(data.createdAt)
+    this.createdAt = new Date(data.createdAt).toLocaleDateString()
     this.creator = new Profile(data.creator)
   }
 }

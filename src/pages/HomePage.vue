@@ -1,4 +1,12 @@
-<template></template>
+<template>
+  <div class="container-fluid">
+    <section class="row justify-content-center">
+      <div class="col-11" v-for="b in blogs" :key="b.id">
+        <BlogCard :blog="b" />
+      </div>
+    </section>
+  </div>
+</template>
 
 <script>
 import { onMounted } from "vue"
@@ -7,6 +15,7 @@ import Pop from "../utils/Pop.js"
 import { blogsService } from "../services/BlogsService.js"
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState.js"
+import BlogCard from "../components/BlogCard.vue"
 
 export default {
   setup() {
@@ -24,9 +33,10 @@ export default {
     })
 
     return {
-      blogs: computed(() => AppState.blogs)
+      blogs: computed(() => AppState.blogs),
     }
-  }
+  },
+  components: { BlogCard }
 }
 </script>
 
