@@ -23,9 +23,9 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/activeblogpage/:blogId',
-    name: 'ActiveBlogPage',
-    component: loadPage('ActiveBlogPage')
+    path: '/profile',
+    name: 'Profile',
+    component: loadPage('ProfilePage')
   }
 ]
 

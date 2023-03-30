@@ -3,7 +3,9 @@
     <div class="card p-3 m-2 elevation-3 border-dark">
       <div>
         <div class="d-flex align-items-center">
-          <img class="profile-icon border-dark elevation-2 my-2" :src="blog.creator.picture" :alt="blog.title">
+          <router-link :to="{ name: 'Profile', params: { profileId: blog.creatorId } }">
+            <img class="profile-icon border-dark elevation-2 my-2" :src="blog.creator.picture" :alt="blog.title">
+          </router-link>
           <h4 class="mx-3"> {{ blog.creator.name }}</h4>
         </div>
         <h3 class="my-2">{{ blog.title }}</h3>
