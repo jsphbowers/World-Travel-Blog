@@ -5,6 +5,8 @@ import { onMounted } from "vue"
 import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop.js"
 import { blogsService } from "../services/BlogsService.js"
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState.js"
 
 export default {
   setup() {
@@ -21,7 +23,9 @@ export default {
       getAllBlogs()
     })
 
-    return {}
+    return {
+      blogs: computed(() => AppState.blogs)
+    }
   }
 }
 </script>
