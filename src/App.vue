@@ -6,6 +6,7 @@
     <router-view />
   </main>
   <footer class="blogger-colors text-dark">
+    <BlogModal />
     Made with 🫕 by Joseph Bowers and Alex Quan
   </footer>
 </template>
@@ -14,6 +15,7 @@
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+// import BlogModal from "../components/BlogModal.vue";
 
 export default {
   setup() {
