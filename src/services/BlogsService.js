@@ -9,6 +9,18 @@ class BlogsService {
     AppState.blogs = res.data.map(b => new Blog(b))
     logger.log(AppState.blogs)
   }
+
+  async createBlog(blogData) {
+    const res = await api.post('/api/blogs', blogData)
+    const newBlog = new Blog(res.data)
+    AppState.blogs.push(newBlog)
+    return blog
+  }
+
+  async editBlog(blogData) {
+    const res = await api.put('api/blogs/' + blogData.id, blogData)
+    AppState.blog = new Blog(res.data)
+  }
 }
 
 export const blogsService = new BlogsService()
