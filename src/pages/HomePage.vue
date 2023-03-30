@@ -1,8 +1,10 @@
 <template></template>
 
 <script>
+import { onMounted } from "vue"
 import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop.js"
+import { blogsService } from "../services/BlogsService.js"
 
 export default {
   setup() {
