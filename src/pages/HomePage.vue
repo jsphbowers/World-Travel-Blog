@@ -1,8 +1,24 @@
 <template></template>
 
 <script>
+import { logger } from "../utils/Logger.js"
+import Pop from "../utils/Pop.js"
+
 export default {
   setup() {
+    async function getAllBlogs() {
+      try {
+        await blogsService.getAllBlogs()
+      } catch (error) {
+        logger.error(error.message)
+        Pop.error(error.message)
+      }
+    }
+
+    onMounted(() => {
+      getAllBlogs()
+    })
+
     return {}
   }
 }
