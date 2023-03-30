@@ -27,7 +27,9 @@
 
 <script>
 import { Blog } from "../models/Blog.js";
+import { blogsService } from "../services/BlogsService.js";
 import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   props: {
@@ -39,7 +41,12 @@ export default {
   setup() {
     return {
       setActive(blogId) {
-        logger.log(blogId)
+        try {
+          blogsService.setActive(blogId)
+        } catch (error) {
+          logger.error(error.message)
+          Pop.error(error.message)
+        }
       }
     };
   },
