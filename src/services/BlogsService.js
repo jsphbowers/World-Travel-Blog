@@ -21,6 +21,12 @@ class BlogsService {
     const res = await api.put('api/blogs/' + blogData.id, blogData)
     AppState.blog = new Blog(res.data)
   }
+
+  setActive(blogId) {
+    const blog = AppState.blogs.find(b => b.id == blogId)
+    AppState.activeBlog = blog
+    logger.log(AppState.activeBlog, "[THIS IS THE ACTIVE BLOG]")
+  }
 }
 
 export const blogsService = new BlogsService()

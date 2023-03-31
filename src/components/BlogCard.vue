@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card p-3 m-2 elevation-3 selectable border-dark">
+    <div class="card p-3 m-2 elevation-3 border-dark">
       <div>
         <div class="d-flex align-items-center">
           <router-link :to="{ name: 'Profile', params: { profileId: blog.creatorId } }">
@@ -14,7 +14,9 @@
             <p>{{ blog.body }}</p>
             <h6>{{ blog.createdAt }}</h6>
           </div>
-          <img class="blog-img" :src="blog.imgUrl" :alt="blog.name">
+          <router-link :to="{ name: 'ActiveBlogPage', params: { blogId: blog.id } }">
+            <img @click="setActive(blog.id)" class="blog-img selectable" :src="blog.imgUrl" :alt="blog.name">
+          </router-link>
         </div>
       </div>
     </div>
@@ -25,6 +27,9 @@
 
 <script>
 import { Blog } from "../models/Blog.js";
+import { blogsService } from "../services/BlogsService.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 
 export default {
   props: {
@@ -35,8 +40,16 @@ export default {
   },
   setup() {
     return {
-    }
-  }
+      setActive(blogId) {
+        try {
+          blogsService.setActive(blogId)
+        } catch (error) {
+          logger.error(error.message)
+          Pop.error(error.message)
+        }
+      }
+    };
+  },
 }
 </script>
 

@@ -26,6 +26,11 @@ const routes = [
     path: '/profile',
     name: 'Profile',
     component: loadPage('ProfilePage')
+  },
+  {
+    path: '/activeblogpage/:blogId',
+    name: 'ActiveBlogPage',
+    component: loadPage('ActiveBlogPage')
   }
 ]
 
