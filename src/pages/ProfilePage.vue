@@ -5,7 +5,7 @@
       <div class="col-10">
         <h1 class="ps-4">{{ profile?.name }}</h1>
       </div>
-      <div v-if="account.id == profile.id" class="col-12 my-4"><button data-bs-toggle="modal" data-bs-target="#blogModal"
+      <div v-if="account.id == profile?.id" class="col-12 my-4"><button data-bs-toggle="modal" data-bs-target="#blogModal"
           class="btn btn-outline-success">Add
           Blog<i class="mdi mdi-plus btn btn-outline"></i></button></div>
     </section>
