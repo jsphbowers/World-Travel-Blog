@@ -27,13 +27,13 @@
               <label for="body">Add blog details</label>
               <textarea rows="5" cols="50" required id="body" name="body" v-model="editable.body" class="form-control"
                 maxlength="1000">
-                                </textarea>
+                                      </textarea>
             </div>
           </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal"> Create Blog
+            <button type="submit" class="btn btn-success" data-bs-dismiss="modal"> Create Blog
             </button>
           </div>
         </form>
@@ -72,6 +72,7 @@ export default {
       editable,
       async createBlog() {
         try {
+          logger.log('[Test create Blog]', editable.value)
           const blogData = editable.value
           await blogsService.createBlog(blogData)
         } catch (error) {

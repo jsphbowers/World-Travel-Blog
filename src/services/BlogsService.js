@@ -27,6 +27,12 @@ class BlogsService {
     AppState.activeBlog = blog
     logger.log(AppState.activeBlog, "[THIS IS THE ACTIVE BLOG]")
   }
+
+  async getBlogsByProfileId(query) {
+    const res = await api.get('api/blogs', { params: query })
+    AppState.blogs = res.data.map(b => new Blog(b))
+  }
+
 }
 
 export const blogsService = new BlogsService()
